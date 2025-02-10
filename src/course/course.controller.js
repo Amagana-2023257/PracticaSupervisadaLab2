@@ -3,7 +3,7 @@ import User from "../user/user.model.js";
 
 export const createCourse = async (req, res) => {
   try {
-    const { name, description, teacher } = req.body; // Ahora debes enviar `teacher` directamente en el cuerpo de la solicitud.
+    const { name, description, teacher } = req.body; 
 
     const teacherCourses = await Course.find({ teacher });
     if (teacherCourses.length >= 3) {
@@ -37,7 +37,7 @@ export const createCourse = async (req, res) => {
 
 export const getCoursesByTeacher = async (req, res) => {
   try {
-    const { teacherId } = req.params; // Ahora se pasa `teacherId` como parámetro en la URL.
+    const { teacherId } = req.params;
 
     const courses = await Course.find({ teacher: teacherId });
 
