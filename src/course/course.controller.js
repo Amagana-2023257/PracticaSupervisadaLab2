@@ -1,4 +1,4 @@
-import Course from "./courses.model.js";
+import Course from "./course.model.js"
 import User from "../user/user.model.js";
 
 export const createCourse = async (req, res) => {
@@ -6,7 +6,6 @@ export const createCourse = async (req, res) => {
     const { name, description } = req.body;
     const teacher = req.user.uid;
 
-    // Ensure the teacher has no more than 3 courses
     const teacherCourses = await Course.find({ teacher });
     if (teacherCourses.length >= 3) {
       return res.status(400).json({
@@ -113,7 +112,6 @@ export const deleteCourse = async (req, res) => {
       });
     }
 
-    // Remove course from all students assigned
     await User.updateMany(
       { assignedCourses: courseId },
       { $pull: { assignedCourses: courseId } }
@@ -163,7 +161,6 @@ export const assignCourseToStudent = async (req, res) => {
       });
     }
 
-    // Check if the course is already assigned to the student
     if (student.assignedCourses.includes(courseId)) {
       return res.status(400).json({
         success: false,
@@ -174,7 +171,6 @@ export const assignCourseToStudent = async (req, res) => {
     student.assignedCourses.push(courseId);
     await student.save();
 
-    // Add student to course's assignedStudents list
     course.assignedStudents.push(uid);
     await course.save();
 
