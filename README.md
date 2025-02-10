@@ -128,4 +128,4 @@ La aplicación tiene dos roles:
 
 1. Clona el repositorio:
    ```bash
-   git clone <repositorio_url>
+   git clone https://github.com/Amagana-2023257/PracticaSupervisadaLab2.git

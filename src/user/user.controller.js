@@ -1,6 +1,6 @@
 import { hash, compare } from "bcrypt";
 import User from "./user.model.js";
-import Course from "../course/course.model.js"; 
+import Course from "../course/course.model.js";  // Importamos el modelo de curso
 
 export const getUserById = async (req, res) => {
   try {

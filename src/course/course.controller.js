@@ -1,10 +1,9 @@
-import Course from "./course.model.js"
+import Course from "./course.model.js";
 import User from "../user/user.model.js";
 
 export const createCourse = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const teacher = req.user.uid;
+    const { name, description, teacher } = req.body; // Ahora debes enviar `teacher` directamente en el cuerpo de la solicitud.
 
     const teacherCourses = await Course.find({ teacher });
     if (teacherCourses.length >= 3) {
@@ -38,7 +37,8 @@ export const createCourse = async (req, res) => {
 
 export const getCoursesByTeacher = async (req, res) => {
   try {
-    const teacherId = req.user.uid;
+    const { teacherId } = req.params; // Ahora se pasa `teacherId` como parámetro en la URL.
+
     const courses = await Course.find({ teacher: teacherId });
 
     return res.status(200).json({
@@ -64,13 +64,6 @@ export const updateCourse = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "Course not found",
-      });
-    }
-
-    if (course.teacher.toString() !== req.user.uid) {
-      return res.status(403).json({
-        success: false,
-        message: "You are not authorized to edit this course.",
       });
     }
 
@@ -102,13 +95,6 @@ export const deleteCourse = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "Course not found",
-      });
-    }
-
-    if (course.teacher.toString() !== req.user.uid) {
-      return res.status(403).json({
-        success: false,
-        message: "You are not authorized to delete this course.",
       });
     }
 
