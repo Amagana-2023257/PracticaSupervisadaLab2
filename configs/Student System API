@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "db99841a-4b7e-4885-b04f-60e2b15a9865",
+		"name": "Student System API Copy",
+		"description": "API collection for the Student and Teacher System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31878676"
+	},
+	"item": [
+		{
+			"name": "Auth Routes",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "John"
+								},
+								{
+									"key": "surname",
+									"value": "Doe"
+								},
+								{
+									"key": "username",
+									"value": "john_doe"
+								},
+								{
+									"key": "email",
+									"value": "john.doe@example.com"
+								},
+								{
+									"key": "password",
+									"value": "Chinito2,000"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/Tablas_Pizza.jpg",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "TEACHER_ROLE"
+								},
+								{
+									"key": "phone",
+									"value": "12345678"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"john.doe@example.com\", \"password\": \"Chinito2,000\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Routes",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/user/findUser/67a982bfe1a4f676d6b04d5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"user",
+								"findUser",
+								"67a982bfe1a4f676d6b04d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"John\", \"surname\": \"Doe\", \"username\": \"john_doe_updated\", \"email\": \"john.doe.updated@example.com\", \"phone\": \"12345678\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/user/updateUser/67a982bfe1a4f676d6b04d5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"user",
+								"updateUser",
+								"67a982bfe1a4f676d6b04d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"password\": \"Chinito2,001\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/user/updatePassword/67a982bfe1a4f676d6b04d5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"user",
+								"updatePassword",
+								"67a982bfe1a4f676d6b04d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/user/deleteUser/67a982bfe1a4f676d6b04d5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"user",
+								"deleteUser",
+								"67a982bfe1a4f676d6b04d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Course to Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"courseId\": \"courseId_here\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/user/assignCourse/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"user",
+								"assignCourse",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course Routes",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Course Name\",\r\n  \"description\": \"Course Description\",\r\n  \"teacher\": \"67a982bfe1a4f676d6b04d5b\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/course/createCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"course",
+								"createCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Courses by Teacher",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/course/coursesByTeacher/67a982bfe1a4f676d6b04d5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"course",
+								"coursesByTeacher",
+								"67a982bfe1a4f676d6b04d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Updated Course Name\", \"description\": \"Updated Description\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/course/updateCourse/67a9854e0a65c7c6bb19c6f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"course",
+								"updateCourse",
+								"67a9854e0a65c7c6bb19c6f0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/studentSystem/v1/course/deleteCourse/67a9854e0a65c7c6bb19c6f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"studentSystem",
+								"v1",
+								"course",
+								"deleteCourse",
+								"67a9854e0a65c7c6bb19c6f0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
